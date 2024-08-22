@@ -2,13 +2,13 @@
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using VideoApp.Core.Models;
-using VideoApp.Data.Interfaces;
+using VideoApp.Services.Interfaces;
 
 namespace VideoApp.ViewModels
 {
     public partial class MainViewModel : ObservableObject
     {
-        private readonly IVideoRepository _videoRepository;
+        private readonly IVideoService _videoService;
 
         [ObservableProperty]
         private ObservableCollection<Video> videos = [];
@@ -16,25 +16,26 @@ namespace VideoApp.ViewModels
         [ObservableProperty]
         private Video selectedVideo = default!;
 
-        public MainViewModel(IVideoRepository videoRepository)
+        public MainViewModel(IVideoService videoService)
         {
-            _videoRepository = videoRepository;
+            _videoService = videoService;
             LoadVideosCommand = new AsyncRelayCommand(LoadVideosAsync);
-
-            Task.Run(async () =>
-            {
-                await _videoRepository.InitializeAsync();
-                await _videoRepository.SeedDataAsync();
-                await LoadVideosAsync();
-            });
+            UploadVideoCommand = new AsyncRelayCommand(UploadVideoAsync);
         }
 
         public IAsyncRelayCommand LoadVideosCommand { get; }
+        public IAsyncRelayCommand UploadVideoCommand { get; }
 
         private async Task LoadVideosAsync()
         {
-            var videoList = await _videoRepository.GetVideosAsync();
+            var videoList = await _videoService.GetVideosAsync();
             Videos = new ObservableCollection<Video>(videoList);
+        }
+
+        private async Task UploadVideoAsync()
+        {
+            await _videoService.UploadVideoAsync();
+            await LoadVideosAsync();
         }
     }
 }

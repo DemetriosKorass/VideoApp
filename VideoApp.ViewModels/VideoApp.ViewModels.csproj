@@ -8,11 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.72" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\VideoApp.Core\VideoApp.Core.csproj" />
     <ProjectReference Include="..\VideoApp.Data\VideoApp.Data.csproj" />
+    <ProjectReference Include="..\VideoApp.Services\VideoApp.Services.csproj" />
   </ItemGroup>
 
 </Project>

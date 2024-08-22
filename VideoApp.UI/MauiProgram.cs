@@ -1,5 +1,7 @@
 ﻿using VideoApp.Data.Interfaces;
 using VideoApp.Data.Repositories;
+using VideoApp.Services;
+using VideoApp.Services.Interfaces;
 using VideoApp.ViewModels;
 
 namespace VideoApp.UI
@@ -17,8 +19,8 @@ namespace VideoApp.UI
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-            string dbPath = Path.Combine(FileSystem.AppDataDirectory, "videos.db");
-            builder.Services.AddSingleton<IVideoRepository>(new VideoRepository(dbPath));
+            builder.Services.AddSingleton<IVideoRepository, VideoRepository>();
+            builder.Services.AddSingleton<IVideoService, VideoService>();
             builder.Services.AddSingleton<MainViewModel>();
             builder.Services.AddSingleton<MainPage>();
 

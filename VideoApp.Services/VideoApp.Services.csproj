@@ -7,11 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.72" />
     <PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\VideoApp.Core\VideoApp.Core.csproj" />
+    <ProjectReference Include="..\VideoApp.Data\VideoApp.Data.csproj" />
   </ItemGroup>
 
 </Project>

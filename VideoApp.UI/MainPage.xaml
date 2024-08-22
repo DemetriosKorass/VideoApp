@@ -50,5 +50,10 @@
                 Command="{Binding LoadVideosCommand}"
                 HorizontalOptions="Center"
                 Margin="0,20,0,0" />
+        <Button Text="Upload Video"
+                Command="{Binding UploadVideoCommand}"
+                HorizontalOptions="Center"
+                Margin="0,20,0,0" />
+
     </StackLayout>
 </ContentPage>
