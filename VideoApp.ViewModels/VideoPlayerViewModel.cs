@@ -2,7 +2,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using VideoApp.Core.Models;
-using static System.Net.WebRequestMethods;
 
 namespace VideoApp.ViewModels;
 

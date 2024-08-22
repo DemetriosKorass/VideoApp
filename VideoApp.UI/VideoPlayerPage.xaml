@@ -6,9 +6,11 @@
 
     <ScrollView>
         <toolkit:MediaElement
-                x:Name="MediaElement"
-                ShouldAutoPlay="True"
-                Source="{Binding Source}"/>
+            x:Name="MediaElement"
+            Source="{Binding Source}"
+            ShouldAutoPlay="True" 
+            ShouldLoopPlayback="True" 
+            ShouldShowPlaybackControls="True"/>
     </ScrollView>
 
 </ContentPage>
