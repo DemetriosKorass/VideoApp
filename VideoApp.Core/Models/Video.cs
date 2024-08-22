@@ -10,6 +10,7 @@ namespace VideoApp.Core.Models
         public string? Title { get; set; }
         public string? Category { get; set; }
         public string? Thumbnail { get; set; }
+        public string? LocalPath { get; set; }
         public DateTime DateAdded { get; set; }
     }
 
