@@ -7,7 +7,6 @@ namespace VideoApp.Data.Interfaces
         Task<List<Video>> GetVideosAsync();
         Task<int> SaveVideoAsync(Video video);
         Task<int> DeleteVideoAsync(Video video);
-        Task InitializeAsync();
         Task SeedDataAsync(); // Optional: For seeding sample data
     }
 }

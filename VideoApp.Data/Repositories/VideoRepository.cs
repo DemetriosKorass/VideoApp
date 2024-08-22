@@ -4,13 +4,14 @@ using VideoApp.Data.Interfaces;
 
 namespace VideoApp.Data.Repositories;
 
-public class VideoRepository(string dbPath) : IVideoRepository
+public class VideoRepository : IVideoRepository
 {
-    private readonly SQLiteAsyncConnection _database = new(dbPath);
+    private readonly SQLiteAsyncConnection _database;
 
-    public async Task InitializeAsync()
+    public VideoRepository(string dbPath)
     {
-        await _database.CreateTableAsync<Video>();
+        _database = new SQLiteAsyncConnection(dbPath);
+        _database.CreateTableAsync<Video>().Wait();
     }
 
     public Task<List<Video>> GetVideosAsync()

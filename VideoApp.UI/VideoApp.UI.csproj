@@ -38,6 +38,22 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
+	  <Debugger>Xamarin</Debugger>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
+	  <Debugger>Xamarin</Debugger>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
+	  <MtouchDebug>True</MtouchDebug>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
+	  <MtouchDebug>True</MtouchDebug>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
@@ -57,8 +73,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="4.1.0" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.80" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.80" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 	</ItemGroup>
 
@@ -66,6 +83,12 @@
 	  <ProjectReference Include="..\VideoApp.Core\VideoApp.Core.csproj" />
 	  <ProjectReference Include="..\VideoApp.Data\VideoApp.Data.csproj" />
 	  <ProjectReference Include="..\VideoApp.ViewModels\VideoApp.ViewModels.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="VideoPlayerPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
